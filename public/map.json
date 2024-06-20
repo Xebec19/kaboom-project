@@ -61,6 +61,17 @@
                  "width":96,
                  "x":336,
                  "y":273
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"Exit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":376,
+                 "y":261
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -221,12 +232,12 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":23,
+ "nextobjectid":24,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"git",
