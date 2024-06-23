@@ -6,7 +6,7 @@ export async function makeMap(k: KaboomCtx, name: string) {
 
   const map = k.make([k.sprite(name), k.scale(scale), k.pos(0)]);
 
-  const spawnPoints: { [key: string]: { x: number; y: number } } = {};
+  const spawnPoints: { [key: string]: { x: number; y: number }[] } = {};
 
   for (const layer of mapData.layers) {
     if (layer.name === "Colliders") {
@@ -25,6 +25,23 @@ export async function makeMap(k: KaboomCtx, name: string) {
           collider.name !== "Exit" ? "platform" : "exit",
         ]);
       }
+      continue;
+    }
+
+    if (layer.name === "spawnpoints") {
+      for (const spawnPoint of layer.objects) {
+        if (spawnPoint[spawnPoint.name]) {
+          spawnPoints[spawnPoint.name].push({
+            x: spawnPoint.x,
+            y: spawnPoint.y,
+          });
+          continue;
+        }
+
+        spawnPoints[spawnPoint.name] = [{ x: spawnPoint.x, y: spawnPoint.y }];
+      }
     }
   }
+
+  return { map, spawnPoints };
 }
